@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2w2i5h0lhc6l"]
+[gd_scene load_steps=9 format=3 uid="uid://d2w2i5h0lhc6l"]
 
 [ext_resource type="Script" uid="uid://di3c0s4wwq7ra" path="res://scripts/Enemy/slime.gd" id="1_fxbww"]
 [ext_resource type="Texture2D" uid="uid://bl53gpvg5mh1y" path="res://assets/sprites/slime_green.png" id="1_nuk1g"]
-[ext_resource type="PackedScene" uid="uid://dtrbka1ef726o" path="res://scenes/killzone.tscn" id="2_aiwyj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayoyu"]
 atlas = ExtResource("1_nuk1g")
@@ -40,8 +39,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6pvg"]
-size = Vector2(14, 15)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p2gj0"]
+size = Vector2(12, 15)
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_fxbww")
@@ -61,8 +60,11 @@ target_position = Vector2(9, 0)
 position = Vector2(0, -7)
 target_position = Vector2(-9, 0)
 
-[node name="Killzone" parent="." instance=ExtResource("2_aiwyj")]
+[node name="HurtBox" type="Area2D" parent="."]
+collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(0, -7.5)
-shape = SubResource("RectangleShape2D_n6pvg")
+shape = SubResource("RectangleShape2D_p2gj0")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

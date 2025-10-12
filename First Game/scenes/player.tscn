@@ -1,9 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqnaqj8yb6hwd"]
+[gd_scene load_steps=29 format=3 uid="uid://dqnaqj8yb6hwd"]
 
 [ext_resource type="Script" uid="uid://duhk4i3n2nkeg" path="res://scripts/Player/player.gd" id="1_ofpvf"]
 [ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="1_p3dy5"]
 [ext_resource type="PackedScene" uid="uid://bl6lk37uqoc25" path="res://scenes/HUD.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://byqi0lx58765g" path="res://scenes/pause_menu.tscn" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://f77txxugikph" path="res://scripts/health_component.gd" id="5_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq0sc"]
 atlas = ExtResource("1_p3dy5")
@@ -206,4 +207,7 @@ position_smoothing_enabled = true
 wait_time = 0.1
 one_shot = true
 
-[node name="HealthComponent" type="Node2D" parent="."]
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("player_HUD")]
+script = ExtResource("5_qlg0r")
+player_HUD = NodePath("../GameCamera2D/Hud")
+metadata/_custom_type_script = "uid://f77txxugikph"

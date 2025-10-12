@@ -3,19 +3,21 @@ extends CharacterBody2D
 
 @onready var coyote_timer := $CoyoteTimer
 @onready var pause_menu := $GameCamera2D/PauseMenu
+@onready var health_component := $HealthComponent
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 
-@export var lifes: int = 3
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity : float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var animated_sprite := $AnimatedSprite2D
 
+func damage(attack: Attack) -> void:
+	health_component.damage(attack)
+
 func _physics_process(delta: float) -> void:
-	var grounded :bool = is_on_floor()
+	var grounded: bool = is_on_floor()
 	# Add the gravity.
 	if not grounded:
 		velocity.y += gravity * delta

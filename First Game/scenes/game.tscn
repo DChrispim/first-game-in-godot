@@ -309,3 +309,4 @@ position = Vector2(529, 81)
 
 [node name="Slime" parent="Enemies" instance=ExtResource("6_l0s6b")]
 position = Vector2(-95, 64)
+enemy_color = Color(0.1470303, 0.59950215, 0.6576624, 1)
