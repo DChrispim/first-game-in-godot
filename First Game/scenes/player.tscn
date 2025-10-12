@@ -1,7 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqnaqj8yb6hwd"]
+[gd_scene load_steps=28 format=3 uid="uid://dqnaqj8yb6hwd"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_ofpvf"]
+[ext_resource type="Script" uid="uid://duhk4i3n2nkeg" path="res://scripts/Player/player.gd" id="1_ofpvf"]
 [ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="1_p3dy5"]
+[ext_resource type="PackedScene" uid="uid://bl6lk37uqoc25" path="res://scenes/HUD.tscn" id="3_dqkch"]
+[ext_resource type="PackedScene" uid="uid://byqi0lx58765g" path="res://scenes/pause_menu.tscn" id="4_qlg0r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq0sc"]
 atlas = ExtResource("1_p3dy5")
@@ -185,3 +187,23 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_bvcm0")
+
+[node name="GameCamera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -7)
+zoom = Vector2(4, 4)
+limit_left = -9999999
+limit_right = 10000001
+limit_bottom = 120
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Hud" parent="GameCamera2D" instance=ExtResource("3_dqkch")]
+
+[node name="PauseMenu" parent="GameCamera2D" instance=ExtResource("4_qlg0r")]
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="HealthComponent" type="Node2D" parent="."]

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bl6lk37uqoc25"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="ScoreText" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 25
+text = "Total coins: 0"
+
+[node name="LifeCounter" type="Label" parent="."]
+offset_left = 184.0
+offset_right = 372.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "You have 0 lifes"

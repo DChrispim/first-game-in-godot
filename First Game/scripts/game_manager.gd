@@ -1,9 +1,14 @@
 extends Node
 
-var score = 0
+var score := 0
+@onready var score_label := $ScoreLabel
+@onready var game_camera := $"../Player/GameCamera2D"
+@onready var HUD := $"../Player/GameCamera2D/Hud"
 
-@onready var score_label = $ScoreLabel
-
-func add_point():
+func add_point() -> void:
 	score += 1
-	score_label.text = "You collected " + str(score) + " coins."
+	HUD.get_node("ScoreText").text = "Total coins: " + str(score)
+
+
+func _ready() -> void:
+	game_camera.make_current()
