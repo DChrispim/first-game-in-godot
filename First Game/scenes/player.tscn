@@ -1,10 +1,16 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqnaqj8yb6hwd"]
+[gd_scene load_steps=31 format=3 uid="uid://dqnaqj8yb6hwd"]
 
 [ext_resource type="Script" uid="uid://duhk4i3n2nkeg" path="res://scripts/Player/player.gd" id="1_ofpvf"]
 [ext_resource type="Texture2D" uid="uid://b8cmjj8vq3r8d" path="res://assets/sprites/knight.png" id="1_p3dy5"]
+[ext_resource type="Script" uid="uid://bqb0ne2igp3nq" path="res://scripts/Player/stats.gd" id="2_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://bl6lk37uqoc25" path="res://scenes/HUD.tscn" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://byqi0lx58765g" path="res://scenes/pause_menu.tscn" id="4_qlg0r"]
 [ext_resource type="Script" uid="uid://f77txxugikph" path="res://scripts/health_component.gd" id="5_qlg0r"]
+
+[sub_resource type="Resource" id="Resource_tuyoq"]
+script = ExtResource("2_tuyoq")
+max_health = 5
+metadata/_custom_type_script = "uid://bqb0ne2igp3nq"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eq0sc"]
 atlas = ExtResource("1_p3dy5")
@@ -178,6 +184,7 @@ radius = 5.0
 z_index = 5
 collision_layer = 2
 script = ExtResource("1_ofpvf")
+stats = SubResource("Resource_tuyoq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
